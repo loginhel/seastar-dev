@@ -20,9 +20,36 @@ deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted univer
 
 RUN DEBIAN_FRONTEND=noninteractive apt install -y tzdata
 
-COPY install-dependencies.sh .
-
-RUN sed -i 's/\r//' install-dependencies.sh \
-	&& bash install-dependencies.sh 
+RUN	buildDeps="ninja-build\
+			   gcc\
+			   g++\
+			   make\
+			   libtool\
+			   cmake\
+			   ragel\
+			   libhwloc-dev\
+			   libnuma-dev\
+			   libpciaccess-dev\
+			   libcrypto++-dev\
+			   libboost-all-dev\
+			   libxml2-dev\
+			   xfslibs-dev\
+			   libgnutls28-dev\
+			   liblz4-dev\
+			   libsctp-dev\
+			   libprotobuf-dev\
+			   protobuf-compiler\
+			   python3\
+			   systemtap-sdt-dev\
+			   libyaml-cpp-dev\
+			   libc-ares-dev\
+			   stow\
+			   libfmt-dev\
+			   diffutils\
+			   valgrind" && \
+    apt-get install -f -y ${buildDeps}
 	
-RUN apt-get install -y git vim openssh-server ctags bzip2 texinfo net-tools
+	
+RUN apt-get install -y git vim openssh-server ctags bzip2 texinfo net-tools rsync
+
+RUN mkdir /run/sshd
