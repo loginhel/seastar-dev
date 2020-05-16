@@ -60,7 +60,8 @@ RUN firstDeps="libasio-dev\
 			 libspdlog-dev\
 			 libpoco-dev\
 			 libpq-dev\
-			 libmariadbclient-dev\
+			 libpqxx-dev\
+			 libmysqlclient-dev\
 			 libsqlite3-dev\
 			 libjsoncpp-dev\
 			 libssl-dev\
@@ -86,7 +87,6 @@ RUN firstDeps="libasio-dev\
 			 librabbitmq-dev\
 			 librdkafka-dev\
 			 libmongoclient-dev\
-			 libpqxx-dev\
 			 libhiredis-dev\
 			 libmemcached-dev\
 			 libczmq-dev\

@@ -1,7 +1,5 @@
 # ubuntu开发环境
-todo: cppzmq安装
 
-## ubuntu开发环境(seastar)
 docker run -e TZ="Asia/Shanghai" --privileged -itd --net=clickhouse --ip="172.26.0.10" --name seastar-dev -p 127.0.0.1:10022:22 -p 9010:9010  registry.cn-shenzhen.aliyuncs.com/hhp_dev/seastar-dev:v0.1 /bin/bash
 
 ```
@@ -17,3 +15,5 @@ service ssh restart
 
 apt list |grep ** 搜索
 ```
+
+todo: cppzmq安装、drogon安装(需要修改mysql配置)
