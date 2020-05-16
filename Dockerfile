@@ -50,6 +50,58 @@ RUN	buildDeps="ninja-build\
     apt-get install -f -y ${buildDeps}
 	
 	
-RUN apt-get install -y git vim openssh-server ctags bzip2 texinfo net-tools rsync
+RUN apt-get install -y git vim openssh-server ctags bzip2 texinfo net-tools rsync pkg-config
 
 RUN mkdir /run/sshd
+
+#drogon等
+RUN firstDeps="libasio-dev\
+			 libevent-dev\
+			 libspdlog-dev\
+			 libpoco-dev\
+			 libpq-dev\
+			 libmariadbclient-dev\
+			 libsqlite3-dev\
+			 libjsoncpp-dev\
+			 libssl-dev\
+			 libgrpc-dev\
+			 libgrpc++-dev\
+			 protobuf-compiler-grpc\
+			 libbison-dev\
+			 libcppunit-dev\
+			 libleveldb-dev\
+			 libfastjson-dev\
+			 libprotoc-dev\
+			 libuv1-dev\
+			 libnghttp2-dev\
+			 libgmock-dev\
+			 rapidjson-dev\
+			 libsnappy-dev\
+			 libbson-dev\
+			 libmsgpack-dev\
+			 libbenchmark-dev\
+			 librestbed-dev\
+			 libwebsocketpp-dev\
+			 libcds-dev\
+			 librabbitmq-dev\
+			 librdkafka-dev\
+			 libmongoclient-dev\
+			 libpqxx-dev\
+			 libhiredis-dev\
+			 libmemcached-dev\
+			 libczmq-dev\
+			 bison\
+			 curl\
+			 lsof\
+			 nginx\
+			 unzip\
+			 zip\
+			 lksctp-tools\
+			 numactl" && \
+    apt-get install -f -y ${firstDeps}
+	
+			 
+			 
+			 
+			 
+			 
