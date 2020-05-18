@@ -43,6 +43,8 @@ RUN	buildDeps="ninja-build\
 			   systemtap-sdt-dev\
 			   libyaml-cpp-dev\
 			   libc-ares-dev\
+			   libudev-dev\
+			   libunistring-dev\
 			   stow\
 			   libfmt-dev\
 			   diffutils\
@@ -92,6 +94,7 @@ RUN firstDeps="libasio-dev\
 			 libczmq-dev\
 			 bison\
 			 curl\
+			 sudo\
 			 lsof\
 			 nginx\
 			 unzip\
@@ -99,9 +102,12 @@ RUN firstDeps="libasio-dev\
 			 lksctp-tools\
 			 numactl" && \
     apt-get install -f -y ${firstDeps}
-	
-			 
-			 
-			 
-			 
-			 
+
+RUN apt-get install -y build-essential linux-image-extra-virtual
+
+RUN	cd && git clone https://github.com/scylladb/seastar.git \
+	&& cd seastar && apt-get update \
+	&& ./install-dependencies.sh \
+	&& git submodule update --init \
+	&& ./configure.py --mode=release --enable-dpdk \
+	&& ninja -C build/release
