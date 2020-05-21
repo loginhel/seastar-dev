@@ -92,6 +92,15 @@ RUN firstDeps="libasio-dev\
 			 libhiredis-dev\
 			 libmemcached-dev\
 			 libczmq-dev\
+			 libdouble-conversion-dev \
+			 libgoogle-glog-dev \
+			 libgflags-dev \
+			 libiberty-dev \
+			 liblzma-dev \
+			 zlib1g-dev \
+			 binutils-dev \
+			 libjemalloc-dev \
+			 libunwind-dev \
 			 bison\
 			 curl\
 			 sudo\
@@ -102,12 +111,3 @@ RUN firstDeps="libasio-dev\
 			 lksctp-tools\
 			 numactl" && \
     apt-get install -f -y ${firstDeps}
-
-RUN apt-get install -y build-essential linux-image-extra-virtual
-
-RUN	cd && git clone https://github.com/scylladb/seastar.git \
-	&& cd seastar && apt-get update \
-	&& ./install-dependencies.sh \
-	&& git submodule update --init \
-	&& ./configure.py --mode=release --enable-dpdk \
-	&& ninja -C build/release
